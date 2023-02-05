@@ -8,17 +8,22 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-const SignupScreen = () => {
+const SignupScreen = ({ navigation }) => {
   const [names, setNames] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const navigateToBio = () => {
+    navigation.navigate("Bio");
+  };
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Noms"
-          value={email}
+          value={names}
           onChangeText={(text) => setNames(text)}
           style={styles.input}
         />
@@ -35,10 +40,17 @@ const SignupScreen = () => {
           style={styles.input}
           secureTextEntry
         />
+        <TextInput
+          placeholder="PasswordConfirmation"
+          value={passwordConfirm}
+          onChangeText={(text) => setPasswordConfirm(text)}
+          style={styles.input}
+          secureTextEntry
+        />
       </View>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={() => {}} style={styles.button}>
-          <Text style={styles.buttonText}>Register</Text>
+        <TouchableOpacity onPress={navigateToBio} style={styles.button}>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
