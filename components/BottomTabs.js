@@ -3,7 +3,7 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import HomeScreen from "../screens/HomeScreen";
-import Notifications from "./Notifications";
+import NotificationScreen from "../screens/NotificationScreen";
 
 const BottomTabs = () => {
   const Tab = createBottomTabNavigator();
@@ -59,7 +59,7 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name="Notifications"
-        component={Notifications}
+        component={NotificationScreen}
         options={{
           tabBarLabel: "Notifications",
           tabBarIcon: ({ color, size }) => (

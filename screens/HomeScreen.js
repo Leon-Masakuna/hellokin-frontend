@@ -1,11 +1,12 @@
 import { StyleSheet, Text, ScrollView, View } from "react-native";
 import React from "react";
+import Header from "../components/Header";
 
 const HomeScreen = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <View>
-        <Text style={styles.text}>This is the Home Screen</Text>
+      <View style={styles.container}>
+        <Header />
       </View>
     </ScrollView>
   );
@@ -14,8 +15,7 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-  container: {},
-  text: {
-    marginTop: 25,
+  container: {
+    marginTop: 13,
   },
 });

@@ -2,9 +2,11 @@ import {
   KeyboardAvoidingView,
   StyleSheet,
   TextInput,
+  Image,
   TouchableOpacity,
   View,
   Text,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 
@@ -21,32 +23,40 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior="padding">
+    <KeyboardAvoidingView style={styles.container}>
+      <View>
+        <Image source={require("../assets/logo.png")} style={styles.image} />
+      </View>
       <View style={styles.inputContainer}>
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={(text) => setEmail(text)}
-          style={styles.input}
-        />
-        <TextInput
-          placeholder="Password"
-          value={password}
-          onChangeText={(text) => setPassword(text)}
-          style={styles.input}
-          secureTextEntry
-        />
+        <Text style={styles.connexionText}>Connectez-vous</Text>
+        <View>
+          <Text>Nom d'utilisateur</Text>
+          <TextInput
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            style={styles.input}
+          />
+        </View>
+        <View>
+          <Text style={styles.passwordText}>Mot de passe</Text>
+          <TextInput
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+            style={styles.input}
+            secureTextEntry
+          />
+        </View>
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={navigateToHome} style={styles.button}>
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Connexion</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={navigateToSignup}
-          style={[styles.button, styles.buttonOutline]}
-        >
-          <Text style={styles.buttonOutlineText}>Signup</Text>
-        </TouchableOpacity>
+      </View>
+      <View style={styles.bottomTextContainer}>
+        <Text>Vous êtes nouveau sur HelloKin ?</Text>
+        <Text onPress={navigateToSignup} style={styles.secondBottomText}>
+          Créez un compte
+        </Text>
       </View>
     </KeyboardAvoidingView>
   );
@@ -55,29 +65,53 @@ const LoginScreen = ({ navigation }) => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    // height: "100%",
+  },
   container: {
     flex: 1,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-evenly",
+    height: "100%",
+  },
+  helloTextContainer: {
     justifyContent: "center",
     alignItems: "center",
+  },
+  connexionTextContainer: {
+    alignSelf: "flex-start",
+    marginLeft: 40,
+  },
+  connexionText: {
+    fontSize: 20,
+    marginBottom: 30,
+    color: "#ec8311",
+    fontWeight: "bold",
   },
   inputContainer: {
     width: "80%",
   },
+  passwordText: {
+    marginTop: 25,
+  },
   input: {
-    backgroundColor: "white",
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    marginTop: 20,
-    borderRadius: 10,
+    paddingHorizontal: 8,
+    paddingVertical: 1,
+    borderColor: "white",
+    borderBottomColor: "#7c7c7c",
+    borderWidth: 2,
+    borderTopWidth: 0,
+    borderLeftWidth: 0,
+    borderRightWidth: 0,
   },
   buttonContainer: {
     width: "60%",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 50,
   },
   button: {
-    backgroundColor: "#0782F9",
+    backgroundColor: "#ec8311",
     width: "100%",
     padding: 10,
     borderRadius: 10,
@@ -86,7 +120,7 @@ const styles = StyleSheet.create({
   buttonOutline: {
     backgroundColor: "white",
     marginTop: 10,
-    borderColor: "#0782F9",
+    borderColor: "#7c7c7c",
     borderWidth: 2,
   },
   buttonText: {
@@ -95,8 +129,26 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   buttonOutlineText: {
-    color: "#0782F9",
+    color: "#7c7c7c",
     fontWeight: "700",
     fontSize: 16,
+  },
+  helloText: {
+    fontSize: 50,
+  },
+  helloBottomText: {
+    fontSize: 12,
+  },
+  image: {
+    width: 100,
+    height: 100,
+  },
+  bottomTextContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  secondBottomText: {
+    color: "#ec8311",
+    fontWeight: "bold",
   },
 });

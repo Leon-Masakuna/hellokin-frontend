@@ -1,20 +1,18 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const Notifications = () => {
+const NotificationScreen = () => {
   return (
     <View style={styles.container}>
-      <Text>These are my notifications</Text>
+      <Text>This is my notifications screen</Text>
     </View>
   );
 };
 
-export default Notifications;
+export default NotificationScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: 25,
   },
 });
