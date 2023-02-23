@@ -12,8 +12,16 @@ const BottomTabs = () => {
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
-        tabBarActiveTintColor: "#e91e63",
+        tabBarActiveTintColor: "#fca80a",
         headerShown: false,
+        tabBarStyle: {
+          height: 60,
+          paddingTop: 2,
+          paddingBottom: 2,
+          backgroundColor: "#041C2E",
+          position: "absolute",
+          borderTopWidth: 0,
+        },
       }}
     >
       <Tab.Screen
@@ -27,10 +35,10 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Hello'Talks"
+        name="Mastermind"
         component={HomeScreen}
         options={{
-          tabBarLabel: "Hello'Talks",
+          tabBarLabel: "Mastermind",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="chat" color={color} size={size} />
           ),
@@ -38,22 +46,12 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Bibliothèques"
+        name="Journal"
         component={HomeScreen}
         options={{
-          tabBarLabel: "Bibliothèques",
+          tabBarLabel: "Journal",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="library" color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="E-Shop"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: "E-Shop",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="shopping" color={color} size={size} />
           ),
         }}
       />
@@ -68,10 +66,10 @@ const BottomTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Paramètres"
+        name="Offres"
         component={HomeScreen}
         options={{
-          tabBarLabel: "Paramètres",
+          tabBarLabel: "Offres d'emplois",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="menu" color={color} size={size} />
           ),

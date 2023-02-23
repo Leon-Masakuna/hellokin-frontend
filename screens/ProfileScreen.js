@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-const BiographyScreen = ({ navigation }) => {
+const ProfileScreen = ({ navigation }) => {
   const [biography, setBiography] = useState("");
 
   const navigateToHome = () => {
@@ -43,7 +43,7 @@ const BiographyScreen = ({ navigation }) => {
   );
 };
 
-export default BiographyScreen;
+export default ProfileScreen;
 
 const styles = StyleSheet.create({
   container: {

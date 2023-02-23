@@ -15,18 +15,14 @@ const Header = () => {
         />
         <Text style={styles.logo}>HelloKin</Text>
         <View style={styles.iconContainer}>
-          <Text style={styles.iconItems}>1 & </Text>
-          <Text style={styles.iconItems}>2</Text>
+          <Text style={styles.iconItems}>1 </Text>
+          <Text style={styles.iconItems}>2 </Text>
+          <Text style={styles.iconItems}>3</Text>
           {/* <FontAwesomeIcon icon={faMugSaucer} /> */}
         </View>
       </View>
       <View style={styles.optionsContainer}>
-        <Text>Tous</Text>
-        <Text>Photos</Text>
-        <Text>Vidéos</Text>
-        <Text>Livres</Text>
-        <Text>Tutoriels</Text>
-        <Text>Podcats</Text>
+        <Text>Merci</Text>
       </View>
     </View>
   );
@@ -37,13 +33,13 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     padding: 5,
+    backgroundColor: "#1F222B",
   },
   logoProfileContainer: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
     flexWrap: "wrap",
-    backgroundColor: "black",
     borderRadius: 5,
     padding: 5,
   },
@@ -56,7 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   iconItems: {
-    fontSize: 25,
+    fontSize: 20,
     color: "white",
   },
   logo: {
@@ -70,9 +66,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 10,
     padding: 25,
-    paddingTop: 15,
-    paddingBottom: 15,
+    paddingTop: 25,
+    paddingBottom: 25,
     backgroundColor: "white",
     borderRadius: 25,
+  },
+  text: {
+    color: "white",
+    fontSize: 12,
   },
 });

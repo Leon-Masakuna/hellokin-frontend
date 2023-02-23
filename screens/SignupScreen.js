@@ -8,6 +8,11 @@ import {
   Image,
 } from "react-native";
 import React, { useState } from "react";
+import FontAwesome, {
+  SolidIcons,
+  RegularIcons,
+  BrandIcons,
+} from "react-native-fontawesome";
 
 const SignupScreen = ({ navigation }) => {
   const [phoneOrEmail, setPhoneOrEmail] = useState("");
@@ -34,9 +39,11 @@ const SignupScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.backButton}>
-        <Text onPress={navigateBack} style={styles.buttonIcone}>
-          Back icon
-        </Text>
+        <FontAwesome
+          icon={BrandIcons.github}
+          onPress={navigateBack}
+          style={styles.buttonIcone}
+        />
       </View>
       <Text style={styles.accountCreate}>Créez un compte</Text>
       <View style={styles.appleFbLogoContainer}>
@@ -50,7 +57,7 @@ const SignupScreen = ({ navigation }) => {
           </Text>
         </View>
         <View style={styles.oRTextContainer}>
-          <Text> OU </Text>
+          <Text style={styles.oRText}> OU </Text>
         </View>
         <View style={styles.facebookContainer}>
           <Image
@@ -90,16 +97,17 @@ const SignupScreen = ({ navigation }) => {
           secureTextEntry
         />
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={navigateToBio} style={styles.button}>
-            <Text onPress={navigateToVerification} style={styles.buttonText}>
-              S'inscrire
-            </Text>
+          <TouchableOpacity
+            onPress={navigateToVerification}
+            style={styles.button}
+          >
+            <Text style={styles.buttonText}>S'inscrire</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.text}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
-            repellat velit quam, expedita molestiae.
+            En vous inscrivant, vous acceptez {"\n"} nos conditions
+            d'utilisation et notre {"\n"} politique de confidentialité
           </Text>
         </View>
         <View style={styles.bottomTextContainer}>
@@ -146,14 +154,15 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     width: "80%",
+    marginTop: -40,
   },
   input: {
     backgroundColor: "white",
-    paddingHorizontal: 15,
+    paddingHorizontal: 12,
     paddingVertical: 10,
     marginTop: 10,
     borderRadius: 25,
-    height: 40,
+    height: 35,
     textAlign: "center",
   },
   buttonContainer: {
@@ -178,7 +187,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#7c7c7c",
-    fontWeight: "700",
     fontSize: 16,
   },
   buttonOutlineText: {
@@ -197,11 +205,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+    color: "white",
   },
   appleFacebookLogoText: {
     fontSize: 9,
     marginLeft: 15,
     marginRight: 15,
+    color: "white",
+    marginBottom: 20,
   },
   image: {
     width: 50,
@@ -217,6 +228,9 @@ const styles = StyleSheet.create({
   },
   oRTextContainer: {
     alignSelf: "flex-end",
+  },
+  oRText: {
+    color: "white",
   },
   backButton: {
     alignSelf: "stretch",

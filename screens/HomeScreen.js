@@ -4,7 +4,7 @@ import Header from "../components/Header";
 
 const HomeScreen = () => {
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView contentContainerStyle={styles.fullContainer}>
       <View style={styles.container}>
         <Header />
       </View>
@@ -15,7 +15,13 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  fullContainer: {
+    marginTop: 13,
+    backgroundColor: "#1F222B",
+    height: "100%",
+  },
   container: {
     marginTop: 13,
+    backgroundColor: "#01070B",
   },
 });

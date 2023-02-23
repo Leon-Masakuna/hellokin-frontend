@@ -6,9 +6,9 @@ import {
   TouchableOpacity,
   View,
   Text,
-  ScrollView,
 } from "react-native";
 import React, { useEffect, useState } from "react";
+import InputSecureText from "react-native-input-secure-text";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -39,11 +39,13 @@ const LoginScreen = ({ navigation }) => {
         </View>
         <View>
           <Text style={styles.passwordText}>Mot de passe</Text>
-          <TextInput
-            value={password}
+          <InputSecureText
+            containerStyle={{ width: "100%" }}
+            placeholder=""
+            iconSize={25}
+            value=""
             onChangeText={(text) => setPassword(text)}
             style={styles.input}
-            secureTextEntry
           />
         </View>
       </View>
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ec8311",
     width: "100%",
     padding: 10,
-    borderRadius: 10,
+    borderRadius: 20,
     alignItems: "center",
   },
   buttonOutline: {
