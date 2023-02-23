@@ -18,7 +18,7 @@ $ Run expo start -c if you have a troubleshoot when running the app
 
 ## Installations
 
-$Nodejs version 16.19.0 +
+$Nodejs version 16 ou plus
 $Any code editor
 $An android or iOs emulator
 
