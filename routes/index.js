@@ -9,7 +9,6 @@ import ProfileScreen from "../screens/ProfileScreen";
 import BottomTabs from "../components/BottomTabs";
 import SignUpPage from "../screens/SignUpPage";
 import VerificationPageScreen from "../screens/VerificationPageScreen";
-import SplashScreens from "../screens/SplashScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,11 +16,6 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SignUpPage">
-        {/* <Stack.Screen
-          name="SplashScreen"
-          options={{ headerShown: false }}
-          component={SplashScreens}
-        /> */}
         <Stack.Screen
           name="SignUpPage"
           options={{ headerShown: false }}
