@@ -28,13 +28,13 @@ const SignUpPage = ({ navigation }) => {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={navigateToSignup} style={styles.button}>
-          <Text style={styles.buttonText}>S'inscrire</Text>
+          <Text style={styles.buttonText}>s'inscrire</Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={navigateToLogin}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.buttonOutlineText}>Se connecter</Text>
+          <Text style={styles.buttonOutlineText}>connexion</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
+    backgroundColor: "white",
   },
   helloTextContainer: {
     justifyContent: "center",
@@ -70,17 +71,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    backgroundColor: "#ec8311",
-    width: "100%",
+    backgroundColor: "#fca80a",
+    width: "70%",
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 50,
     alignItems: "center",
   },
   buttonOutline: {
     backgroundColor: "white",
-    marginTop: 10,
+    marginTop: 20,
     borderColor: "#7c7c7c",
-    borderWidth: 2,
+    borderWidth: 1,
   },
   buttonText: {
     color: "white",
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   helloText: {
-    fontSize: 50,
+    fontSize: 80,
     color: "#7c7c7c",
     fontWeight: "300",
   },

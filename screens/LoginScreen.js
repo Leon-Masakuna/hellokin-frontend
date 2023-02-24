@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Text,
+  ScrollView,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import InputSecureText from "react-native-input-secure-text";
@@ -23,59 +24,60 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
-      <View>
-        <Image source={require("../assets/logo.png")} style={styles.image} />
-      </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.connexionText}>Connectez-vous</Text>
+    <ScrollView>
+      <View style={styles.container}>
         <View>
-          <Text>Nom d'utilisateur</Text>
-          <TextInput
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            style={styles.input}
-          />
+          <Image source={require("../assets/logo.png")} style={styles.image} />
         </View>
-        <View>
-          <Text style={styles.passwordText}>Mot de passe</Text>
-          <InputSecureText
-            containerStyle={{ width: "100%" }}
-            placeholder=""
-            iconSize={25}
-            value=""
-            onChangeText={(text) => setPassword(text)}
-            style={styles.input}
-          />
+        <View style={styles.inputContainer}>
+          <Text style={styles.connexionText}>Connectez-vous</Text>
+          <View>
+            <Text>Nom d'utilisateur</Text>
+            <TextInput
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+              style={styles.input}
+            />
+          </View>
+          <View>
+            <Text style={styles.passwordText}>Mot de passe</Text>
+            <InputSecureText
+              containerStyle={{ width: "100%" }}
+              placeholder=""
+              iconSize={25}
+              value=""
+              onChangeText={(text) => setPassword(text)}
+              style={[styles.input, styles.lastInput]}
+            />
+          </View>
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity onPress={navigateToHome} style={styles.button}>
+            <Text style={styles.buttonText}>Connexion</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.bottomTextContainer}>
+          <Text>Vous êtes nouveau sur HelloKin ?</Text>
+          <Text onPress={navigateToSignup} style={styles.secondBottomText}>
+            Créez un compte
+          </Text>
         </View>
       </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={navigateToHome} style={styles.button}>
-          <Text style={styles.buttonText}>Connexion</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.bottomTextContainer}>
-        <Text>Vous êtes nouveau sur HelloKin ?</Text>
-        <Text onPress={navigateToSignup} style={styles.secondBottomText}>
-          Créez un compte
-        </Text>
-      </View>
-    </KeyboardAvoidingView>
+    </ScrollView>
   );
 };
 
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  scrollContainer: {
-    // height: "100%",
-  },
   container: {
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "space-evenly",
-    height: "100%",
+    paddingTop: 150,
+    paddingBottom: 20,
+    backgroundColor: "white",
   },
   helloTextContainer: {
     justifyContent: "center",
@@ -87,7 +89,8 @@ const styles = StyleSheet.create({
   },
   connexionText: {
     fontSize: 20,
-    marginBottom: 30,
+    marginTop: 100,
+    marginBottom: 40,
     color: "#ec8311",
     fontWeight: "bold",
   },
@@ -98,7 +101,6 @@ const styles = StyleSheet.create({
     marginTop: 25,
   },
   input: {
-    paddingHorizontal: 8,
     paddingVertical: 1,
     borderColor: "white",
     borderBottomColor: "#7c7c7c",
@@ -107,16 +109,20 @@ const styles = StyleSheet.create({
     borderLeftWidth: 0,
     borderRightWidth: 0,
   },
+  lastInput: {
+    marginBottom: 1,
+  },
   buttonContainer: {
     width: "60%",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 55,
   },
   button: {
     backgroundColor: "#ec8311",
     width: "100%",
-    padding: 10,
-    borderRadius: 20,
+    padding: 15,
+    borderRadius: 50,
     alignItems: "center",
   },
   buttonOutline: {
@@ -148,6 +154,7 @@ const styles = StyleSheet.create({
   bottomTextContainer: {
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 90,
   },
   secondBottomText: {
     color: "#ec8311",
