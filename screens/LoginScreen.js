@@ -14,12 +14,18 @@ const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [isFocused, setIsFocused] = useState(false);
+  const [isNotFocused, setIsNotFocused] = useState(false);
+
   const navigateToSignup = () => {
     navigation.navigate("SignUp");
   };
 
   const navigateToHome = () => {
     navigation.navigate("Home");
+  };
+  const navigateToProfile = () => {
+    navigation.navigate("Bio");
   };
 
   return (
@@ -28,16 +34,18 @@ const LoginScreen = ({ navigation }) => {
         <Image source={require("../assets/logo.png")} style={styles.image} />
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {/* <View style={styles.inputContainer}> */}
         <View style={styles.connexionTextContainer}>
           <Text style={styles.connexionText}>connectez-vous</Text>
         </View>
         <View style={styles.inputContainer}>
-          <Text>Nom d'utilisateur</Text>
+          <Text style={isFocused && styles.textLabelChange}>
+            Nom d'utilisateur
+          </Text>
           <TextInput
             value={email}
             onChangeText={(text) => setEmail(text)}
             style={styles.input}
+            onPressIn={() => setIsFocused(true)}
           />
           <Text style={styles.passwordText}>Mot de passe</Text>
           <InputSecureText
@@ -46,7 +54,6 @@ const LoginScreen = ({ navigation }) => {
             value={password}
           />
         </View>
-        {/* </View> */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={navigateToHome} style={styles.button}>
             <Text style={styles.buttonText}>connexion</Text>
@@ -163,5 +170,8 @@ const styles = StyleSheet.create({
   secondBottomText: {
     color: "#ec8311",
     fontWeight: "bold",
+  },
+  textLabelChange: {
+    color: "#fca80a",
   },
 });

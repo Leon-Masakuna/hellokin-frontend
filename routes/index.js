@@ -32,7 +32,7 @@ const Routes = () => {
           component={SignupScreen}
         />
         <Stack.Screen
-          name="Profile"
+          name="Bio"
           options={{ headerShown: false }}
           component={ProfileScreen}
         />
