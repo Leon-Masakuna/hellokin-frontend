@@ -1,26 +1,27 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
-import { Zocial } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
+import { Ionicons, AntDesign, Zocial } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
-const Header = ({ navigation }) => {
+const Header = () => {
+  const navigation = useNavigation();
   const navigateToProfile = () => {
-    navigation.navigate("Profile");
+    navigation.navigate("Bio");
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.logoProfileContainer}>
+        <TouchableOpacity onPress={navigateToProfile}>
+          <Image
+            source={{
+              uri: "https://ca.slack-edge.com/T03BH6JN601-U03FK6874CF-fb4094095857-512",
+            }}
+            style={styles.image}
+          />
+        </TouchableOpacity>
         <Image
-          onPress={navigateToProfile}
-          source={{
-            uri: "https://ca.slack-edge.com/T03BH6JN601-U03FK6874CF-fb4094095857-512",
-          }}
-          style={styles.image}
-        />
-        <Image
-          source={require("../home/assets/Logo_Hellokin.png")}
+          source={require("../../assets/Logo_Hellokin.png")}
           style={styles.homeLogo}
         />
         <View style={styles.iconContainer}>

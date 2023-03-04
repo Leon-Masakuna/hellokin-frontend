@@ -3,10 +3,11 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
+  ScrollView,
 } from "react-native";
 import React, { useState } from "react";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ProfileScreen = ({ navigation }) => {
   const [biography, setBiography] = useState("");
@@ -17,28 +18,31 @@ const ProfileScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={{
-          uri: "https://ca.slack-edge.com/T03BH6JN601-U03FK6874CF-fb4094095857-512",
-        }}
-        style={styles.image}
-      />
-      <Text>Choose your profile picture</Text>
+      <View style={styles.menuContainer}>
+        <Entypo name="dots-three-vertical" size={24} color="#fca80a" />
+      </View>
       <View>
-        <TextInput
-          placeholder="Write a little biography about your self"
-          value={biography}
-          onChangeText={(text) => setBiography(text)}
-          style={styles.textArea}
-          multiline={true}
-          numberOfLines={4}
-        />
+        <View style={styles.imageContainer}>
+          <Image
+            source={
+              {
+                // uri: "https://ca.slack-edge.com/T03BH6JN601-U03FK6874CF-fb4094095857-512",
+              }
+            }
+            style={styles.image}
+          />
+        </View>
+        <View style={styles.choosePicture}>
+          <MaterialCommunityIcons
+            name="camera-plus-outline"
+            size={24}
+            style={styles.iconColor}
+          />
+        </View>
       </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={navigateToHome} style={styles.button}>
-          <Text style={styles.buttonText}>Save</Text>
-        </TouchableOpacity>
-      </View>
+      <ScrollView style={styles.containerScroll}>
+        <View style={styles.containerInputs}></View>
+      </ScrollView>
     </View>
   );
 };
@@ -50,12 +54,18 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: "#0C0D0D",
+  },
+  imageContainer: {
+    width: 150,
+    height: 150,
+    borderRadius: 100,
+    backgroundColor: "white",
   },
   image: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    margin: 10,
+    height: "100%",
+    width: "100%",
+    borderRadius: 100,
   },
   textArea: {
     backgroundColor: "white",
@@ -67,28 +77,31 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
     width: 350,
   },
-  buttonContainer: {
-    width: "60%",
-    justifyContent: "center",
-    alignItems: "center",
+  menuContainer: {
+    marginTop: 50,
+    alignSelf: "flex-end",
+    marginBottom: 120,
+  },
+  containerScroll: {
+    height: "100%",
+    width: "100%",
+  },
+  containerInputs: {
+    width: "100%",
+    height: 180,
+    backgroundColor: "white",
+    borderRadius: 20,
+  },
+  containerScroll: {
+    width: 300,
+    borderRadius: 20,
     marginTop: 50,
   },
-  button: {
-    backgroundColor: "#0782F9",
-    width: "100%",
-    padding: 10,
-    borderRadius: 10,
-    alignItems: "center",
+  choosePicture: {
+    alignSelf: "flex-end",
   },
-  buttonOutline: {
-    backgroundColor: "white",
-    marginTop: 10,
-    borderColor: "#0782F9",
-    borderWidth: 2,
-  },
-  buttonText: {
+  iconColor: {
+    fontSize: 40,
     color: "white",
-    fontWeight: "700",
-    fontSize: 16,
   },
 });
