@@ -6,7 +6,7 @@ import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
 import SignupScreen from "../screens/SignupScreen";
 import ProfileScreen from "../screens/ProfileScreen";
-import BottomTabs from "../components/BottomTabs";
+import BottomTabs from "../components/home/BottomTabs";
 import SignUpPage from "../screens/SignUpPage";
 import VerificationPageScreen from "../screens/VerificationPageScreen";
 
@@ -32,7 +32,7 @@ const Routes = () => {
           component={SignupScreen}
         />
         <Stack.Screen
-          name="Bio"
+          name="Profile"
           options={{ headerShown: false }}
           component={ProfileScreen}
         />

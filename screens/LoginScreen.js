@@ -1,5 +1,4 @@
 import {
-  KeyboardAvoidingView,
   StyleSheet,
   TextInput,
   Image,
@@ -8,7 +7,7 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import InputSecureText from "react-native-input-secure-text";
 
 const LoginScreen = ({ navigation }) => {
@@ -24,78 +23,79 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View>
-          <Image source={require("../assets/logo.png")} style={styles.image} />
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image source={require("../assets/logo.png")} style={styles.image} />
+      </View>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {/* <View style={styles.inputContainer}> */}
+        <View style={styles.connexionTextContainer}>
+          <Text style={styles.connexionText}>connectez-vous</Text>
         </View>
         <View style={styles.inputContainer}>
-          <Text style={styles.connexionText}>Connectez-vous</Text>
-          <View>
-            <Text>Nom d'utilisateur</Text>
-            <TextInput
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-              style={styles.input}
-            />
-          </View>
-          <View>
-            <Text style={styles.passwordText}>Mot de passe</Text>
-            <InputSecureText
-              containerStyle={{ width: "100%" }}
-              placeholder=""
-              iconSize={25}
-              value=""
-              onChangeText={(text) => setPassword(text)}
-              style={[styles.input, styles.lastInput]}
-            />
-          </View>
+          <Text>Nom d'utilisateur</Text>
+          <TextInput
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+            style={styles.input}
+          />
+          <Text style={styles.passwordText}>Mot de passe</Text>
+          <InputSecureText
+            containerStyle={{ width: "100%" }}
+            iconSize={25}
+            value={password}
+          />
         </View>
+        {/* </View> */}
         <View style={styles.buttonContainer}>
           <TouchableOpacity onPress={navigateToHome} style={styles.button}>
-            <Text style={styles.buttonText}>Connexion</Text>
+            <Text style={styles.buttonText}>connexion</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.bottomTextContainer}>
-          <Text>Vous êtes nouveau sur HelloKin ?</Text>
+          <Text>vous êtes nouveau sur HelloKin ?</Text>
           <Text onPress={navigateToSignup} style={styles.secondBottomText}>
             Créez un compte
           </Text>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 export default LoginScreen;
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    height: "100%",
+    width: "100%",
+  },
   container: {
-    flex: 1,
-    flexDirection: "column",
-    alignItems: "center",
     justifyContent: "space-evenly",
-    paddingTop: 150,
+    paddingTop: 100,
     paddingBottom: 20,
     backgroundColor: "white",
+    width: "100%",
   },
   helloTextContainer: {
     justifyContent: "center",
     alignItems: "center",
   },
   connexionTextContainer: {
-    alignSelf: "flex-start",
-    marginLeft: 40,
+    alignSelf: "center",
+    width: 300,
+    marginTop: 100,
+    marginBottom: 40,
   },
   connexionText: {
     fontSize: 20,
-    marginTop: 100,
-    marginBottom: 40,
-    color: "#ec8311",
+    color: "#fca80a",
     fontWeight: "bold",
   },
   inputContainer: {
-    width: "80%",
+    width: 300,
+    alignSelf: "center",
+    marginTop: 5,
   },
   passwordText: {
     marginTop: 25,
@@ -113,15 +113,16 @@ const styles = StyleSheet.create({
     marginBottom: 1,
   },
   buttonContainer: {
-    width: "60%",
+    width: "40%",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 55,
+    marginTop: 70,
+    alignSelf: "center",
   },
   button: {
-    backgroundColor: "#ec8311",
+    backgroundColor: "#fca80a",
     width: "100%",
-    padding: 15,
+    padding: 10,
     borderRadius: 50,
     alignItems: "center",
   },
@@ -134,7 +135,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     fontWeight: "700",
-    fontSize: 16,
+    fontSize: 18,
   },
   buttonOutlineText: {
     color: "#7c7c7c",
@@ -146,6 +147,9 @@ const styles = StyleSheet.create({
   },
   helloBottomText: {
     fontSize: 12,
+  },
+  imageContainer: {
+    alignSelf: "center",
   },
   image: {
     width: 100,

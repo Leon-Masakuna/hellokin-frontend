@@ -8,21 +8,14 @@ import {
   ScrollView,
 } from "react-native";
 import React, { useState } from "react";
-import FontAwesome, {
-  SolidIcons,
-  RegularIcons,
-  BrandIcons,
-} from "react-native-fontawesome";
+import { Feather } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
 const SignupScreen = ({ navigation }) => {
   const [phoneOrEmail, setPhoneOrEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassWord] = useState("");
-
-  const navigateToBio = () => {
-    navigation.navigate("Bio");
-  };
 
   const navigateToLogin = () => {
     navigation.navigate("Login");
@@ -37,39 +30,40 @@ const SignupScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.backButton}>
-          <FontAwesome
-            icon={BrandIcons.github}
-            onPress={navigateBack}
-            style={styles.buttonIcone}
+    <View style={styles.container}>
+      <View style={styles.backButton}>
+        <Feather
+          onPress={navigateBack}
+          name="arrow-left"
+          size={24}
+          color="#fca80a"
+        />
+      </View>
+      <Text style={styles.accountCreate}>Créez un compte</Text>
+      <View style={styles.appleFbLogoContainer}>
+        <View style={styles.facebookContainer}>
+          <Image
+            source={require("../assets/FacebookLogo.png")}
+            style={styles.image}
           />
+          <Text style={styles.appleFacebookLogoText}>
+            Se connecter avec facebook
+          </Text>
         </View>
-        <Text style={styles.accountCreate}>Créez un compte</Text>
-        <View style={styles.appleFbLogoContainer}>
-          <View style={styles.facebookContainer}>
-            <Image
-              source={require("../assets/FacebookLogo.png")}
-              style={styles.image}
-            />
-            <Text style={styles.appleFacebookLogoText}>
-              Se connecter avec facebook
-            </Text>
-          </View>
-          <View style={styles.oRTextContainer}>
-            <Text style={styles.oRText}> OU </Text>
-          </View>
-          <View style={styles.facebookContainer}>
-            <Image
-              source={require("../assets/appleLogo.jpg")}
-              style={styles.image}
-            />
-            <Text style={styles.appleFacebookLogoText}>
-              Se connecter avec apple
-            </Text>
-          </View>
+        <View style={styles.oRTextContainer}>
+          <Text style={styles.oRText}> OU </Text>
         </View>
+        <View style={styles.facebookContainer}>
+          <Image
+            source={require("../assets/appleLogo.jpg")}
+            style={styles.image}
+          />
+          <Text style={styles.appleFacebookLogoText}>
+            Se connecter avec apple
+          </Text>
+        </View>
+      </View>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.inputContainer}>
           <TextInput
             placeholder="Numéro de téléphone ou adresse email"
@@ -120,8 +114,8 @@ const SignupScreen = ({ navigation }) => {
             </Text>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
@@ -136,8 +130,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     alignItems: "center",
     backgroundColor: "#fca80a",
-    paddingTop: 150,
-    paddingBottom: 42,
+    paddingTop: 50,
   },
   textContainer: {
     paddingLeft: 70,
@@ -148,7 +141,7 @@ const styles = StyleSheet.create({
   text: {
     color: "#ffffff",
     textAlign: "center",
-    fontSize: 8,
+    fontSize: 10,
   },
   colorText: {
     color: "#ffffff",
@@ -156,16 +149,16 @@ const styles = StyleSheet.create({
   accountCreate: {
     color: "#ffffff",
     textAlign: "center",
-    fontSize: 18,
-    marginTop: 150,
+    fontSize: 20,
+    marginTop: 120,
+    marginBottom: 10,
   },
   inputContainer: {
     width: "80%",
-    marginTop: -40,
   },
   input: {
     backgroundColor: "white",
-    paddingHorizontal: 12,
+    paddingHorizontal: 25,
     paddingVertical: 10,
     marginTop: 10,
     borderRadius: 25,
@@ -214,7 +207,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     color: "white",
     marginTop: 20,
-    marginBottom: 50,
+    marginBottom: 5,
   },
   appleFacebookLogoText: {
     fontSize: 9,
@@ -232,7 +225,7 @@ const styles = StyleSheet.create({
   facebookContainer: {
     justifyContent: "center",
     alignItems: "center",
-    borderBottomColor: "black",
+    borderBottomColor: "white",
     borderBottomWidth: StyleSheet.hairlineWidth,
   },
   oRTextContainer: {
@@ -242,13 +235,17 @@ const styles = StyleSheet.create({
     color: "white",
   },
   backButton: {
-    alignSelf: "stretch",
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
     marginLeft: 20,
-    marginTop: -110,
+    backgroundColor: "white",
+    alignSelf: "flex-start",
+    padding: 5,
+    borderRadius: 50,
   },
   buttonIcone: {
     textAlign: "left",
+  },
+  scrollContainer: {
+    height: "100%",
+    width: "100%",
   },
 });

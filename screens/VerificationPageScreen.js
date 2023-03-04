@@ -5,6 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from "react-native";
 import React from "react";
 
@@ -19,18 +20,20 @@ const VerificationPageScreen = ({ navigation }) => {
         <Image source={require("../assets/sms.png")} style={styles.image} />
       </View>
       <View style={styles.codeContainer}>
-        <View style={styles.verificationContainer}>
-          <Text style={styles.verificationText}>
-            Entrez votre code de {"\n"} vérification
-          </Text>
-          <TextInput style={styles.verificationCode} />
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity onPress={navigateToHome} style={styles.button}>
-              <Text style={styles.buttonText}>Vérifier</Text>
-            </TouchableOpacity>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.verificationContainer}>
+            <Text style={styles.verificationText}>
+              entrez votre code de {"\n"} vérification
+            </Text>
+            <TextInput style={styles.verificationCode} />
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity onPress={navigateToHome} style={styles.button}>
+                <Text style={styles.buttonText}>vérifier</Text>
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        <Text style={styles.smsText}>Envoyez un sms</Text>
+          <Text style={styles.smsText}>envoyez un sms</Text>
+        </ScrollView>
       </View>
     </View>
   );
@@ -39,17 +42,22 @@ const VerificationPageScreen = ({ navigation }) => {
 export default VerificationPageScreen;
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    height: "100%",
+    width: "100%",
+  },
   container: {
     flex: 1,
     flexDirection: "column",
     justifyContent: "space-evenly",
     alignItems: "center",
-    marginTop: 25,
     backgroundColor: "#fca80a",
+    height: "100%",
+    paddingTop: 200,
   },
   codeContainer: {
     justifyContent: "center",
-    marginTop: -100,
+    marginTop: 150,
   },
   verificationContainer: {
     justifyContent: "center",
@@ -83,7 +91,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   button: {
-    backgroundColor: "#ec8311",
+    backgroundColor: "#fca80a",
     width: "60%",
     padding: 8,
     borderRadius: 20,
@@ -95,8 +103,8 @@ const styles = StyleSheet.create({
   },
   smsText: {
     textAlign: "center",
-    marginTop: 40,
     color: "white",
+    marginTop: 50,
   },
   imageContainer: {
     borderRadius: "50%",
