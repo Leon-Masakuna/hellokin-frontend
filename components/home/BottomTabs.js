@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import HomeScreen from "../screens/HomeScreen";
-import NotificationScreen from "../screens/NotificationScreen";
+import HomeScreen from "../../screens/HomeScreen";
+import NotificationScreen from "../../screens/NotificationScreen";
 
 const BottomTabs = () => {
   const Tab = createBottomTabNavigator();

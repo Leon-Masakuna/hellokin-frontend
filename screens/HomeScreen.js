@@ -1,6 +1,6 @@
 import { StyleSheet, Text, ScrollView, View } from "react-native";
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/home/Header";
 
 const HomeScreen = () => {
   return (
