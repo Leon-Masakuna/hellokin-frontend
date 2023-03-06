@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   containerInputs: {
     width: "100%",
     height: 180,
-    backgroundColor: "white",
+    backgroundColor: "#363737",
     borderRadius: 20,
   },
   containerScroll: {

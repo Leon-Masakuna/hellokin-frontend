@@ -57,7 +57,7 @@ const BottomTabs = () => {
       />
       <Tab.Screen
         name="Notifications"
-        component={NotificationScreen}
+        component={HomeScreen}
         options={{
           tabBarLabel: "Notifications",
           tabBarIcon: ({ color, size }) => (
