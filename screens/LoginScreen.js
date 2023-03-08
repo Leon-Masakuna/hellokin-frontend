@@ -7,15 +7,19 @@ import {
   Text,
   ScrollView,
 } from "react-native";
-import React, { useState } from "react";
-import InputSecureText from "react-native-input-secure-text";
+import React, { useEffect, useState } from "react";
+import { USER_LOGIN_ROOT } from "@env";
+import { Ionicons } from "@expo/vector-icons";
 
 const LoginScreen = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    userName: "",
+    password: "",
+  });
 
   const [isFocused, setIsFocused] = useState(false);
-  const [isNotFocused, setIsNotFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(true);
 
   const navigateToSignup = () => {
     navigation.navigate("SignUp");
@@ -24,10 +28,23 @@ const LoginScreen = ({ navigation }) => {
   const navigateToHome = () => {
     navigation.navigate("Home");
   };
-  const navigateToProfile = () => {
-    navigation.navigate("Bio");
-  };
 
+  //get user data from the server
+  /* useEffect(() => {
+    fetch(USER_LOGIN_ROOT, {
+      method: "GET",
+      body: {
+        userName: user.userName,
+        password: user.password,
+      },
+    })
+      .then((results) => results.json())
+      .then((data) => {
+        setUser(data);
+        console.log("users: ", user);
+      });
+  }, []);
+ */
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -42,16 +59,32 @@ const LoginScreen = ({ navigation }) => {
             Nom d'utilisateur
           </Text>
           <TextInput
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-            style={styles.input}
+            value={user.userName}
+            onChangeText={(text) => setUser(text)}
             onPressIn={() => setIsFocused(true)}
+            style={styles.input}
           />
-          <Text style={styles.passwordText}>Mot de passe</Text>
-          <InputSecureText
-            containerStyle={{ width: "100%" }}
-            iconSize={25}
-            value={password}
+          <Text
+            style={[
+              styles.passwordText,
+              isPasswordFocused && styles.textLabelChange,
+            ]}
+          >
+            Mot de passe
+          </Text>
+          <TextInput
+            value={user.password}
+            onChangeText={(text) => setUser(text)}
+            onPressIn={() => setIsPasswordFocused(true)}
+            secureTextEntry={passwordVisible}
+            style={styles.input}
+          />
+          <Ionicons
+            name={passwordVisible ? "eye" : "eye-off"}
+            onPress={() => setPasswordVisible(!passwordVisible)}
+            size={24}
+            color="black"
+            style={styles.visibleInput}
           />
         </View>
         <View style={styles.buttonContainer}>
@@ -173,5 +206,9 @@ const styles = StyleSheet.create({
   },
   textLabelChange: {
     color: "#fca80a",
+  },
+  visibleInput: {
+    alignSelf: "flex-end",
+    marginTop: -30,
   },
 });

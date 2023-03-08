@@ -6,10 +6,11 @@ import {
   Text,
   Image,
   ScrollView,
+  Alert,
 } from "react-native";
 import React, { useState } from "react";
 import { Feather } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
+import { USER_SIGNUP_ROOT } from "@env";
 
 const SignupScreen = ({ navigation }) => {
   const [phoneOrEmail, setPhoneOrEmail] = useState("");
@@ -20,13 +21,36 @@ const SignupScreen = ({ navigation }) => {
   const navigateToLogin = () => {
     navigation.navigate("Login");
   };
-
   const navigateBack = () => {
     navigation.navigate("SignUpPage");
   };
 
-  const navigateToVerification = () => {
-    navigation.navigate("Verification");
+  const onClick = () => {
+    Alert.alert("User created successfully");
+  };
+
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      phoneOrEmail: phoneOrEmail,
+      fullName: fullName,
+      userName: userName,
+      password: password,
+    }),
+  };
+
+  const createNewUser = async () => {
+    try {
+      await fetch(USER_SIGNUP_ROOT, requestOptions).then((response) => {
+        response.json().then((data) => {
+          Alert.alert("User created successfully");
+          console.log("User data : ", data);
+        });
+      });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -82,7 +106,6 @@ const SignupScreen = ({ navigation }) => {
             value={userName}
             onChangeText={(text) => setUserName(text)}
             style={styles.input}
-            secureTextEntry
           />
           <TextInput
             placeholder="Mot de passe"
@@ -92,10 +115,7 @@ const SignupScreen = ({ navigation }) => {
             secureTextEntry
           />
           <View style={styles.buttonContainer}>
-            <TouchableOpacity
-              onPress={navigateToVerification}
-              style={styles.button}
-            >
+            <TouchableOpacity onPress={createNewUser} style={styles.button}>
               <Text style={styles.buttonText}>s'inscrire</Text>
             </TouchableOpacity>
           </View>

@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import HomeScreen from "../../screens/HomeScreen";
 import NotificationScreen from "../../screens/NotificationScreen";
+import { Entypo, MaterialIcons, Ionicons } from "@expo/vector-icons";
 
 const BottomTabs = () => {
   const Tab = createBottomTabNavigator();
@@ -30,7 +31,8 @@ const BottomTabs = () => {
         options={{
           tabBarLabel: "Home",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
+            // <MaterialCommunityIcons name="home" color={color} size={size} />
+            <Entypo name="home" size={24} color={color} />
           ),
         }}
       />
@@ -40,7 +42,8 @@ const BottomTabs = () => {
         options={{
           tabBarLabel: "Mastermind",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="chat" color={color} size={size} />
+            // <MaterialCommunityIcons name="chat" color={color} size={size} />
+            <Ionicons name="md-chatbubble" size={24} color={color} />
           ),
           tabBarBadge: 3,
         }}
@@ -51,7 +54,8 @@ const BottomTabs = () => {
         options={{
           tabBarLabel: "Journal",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="library" color={color} size={size} />
+            // <MaterialCommunityIcons name="library" color={color} size={size} />
+            <MaterialIcons name="my-library-books" size={24} color={color} />
           ),
         }}
       />
@@ -61,7 +65,8 @@ const BottomTabs = () => {
         options={{
           tabBarLabel: "Notifications",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={size} />
+            // <MaterialCommunityIcons name="bell" color={color} size={size} />
+            <Ionicons name="md-notifications-sharp" size={24} color={color} />
           ),
         }}
       />
@@ -71,7 +76,8 @@ const BottomTabs = () => {
         options={{
           tabBarLabel: "Offres d'emplois",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="menu" color={color} size={size} />
+            // <MaterialCommunityIcons name="menu" color={color} size={size} />
+            <MaterialIcons name="menu" size={24} color={color} />
           ),
         }}
       />
