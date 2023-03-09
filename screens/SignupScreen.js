@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import { Feather } from "@expo/vector-icons";
-import { USER_SIGNUP_ROOT } from "@env";
+import { BACKEND_CONNECTION } from "@env";
 
 const SignupScreen = ({ navigation }) => {
   const [phoneOrEmail, setPhoneOrEmail] = useState("");
@@ -25,8 +25,8 @@ const SignupScreen = ({ navigation }) => {
     navigation.navigate("SignUpPage");
   };
 
-  const onClick = () => {
-    Alert.alert("User created successfully");
+  const navigateToHome = () => {
+    navigation.navigate("Home");
   };
 
   const requestOptions = {
@@ -40,14 +40,23 @@ const SignupScreen = ({ navigation }) => {
     }),
   };
 
-  const createNewUser = async () => {
+  const createNewUser = () => {
     try {
-      await fetch(USER_SIGNUP_ROOT, requestOptions).then((response) => {
-        response.json().then((data) => {
-          Alert.alert("User created successfully");
-          console.log("User data : ", data);
-        });
-      });
+      fetch(BACKEND_CONNECTION + "auth/signup", requestOptions).then(
+        (response) => {
+          response.json().then((data) => {
+            Alert.alert("Hellokin message", "User created successfully", [
+              {
+                text: "OK",
+                onPress: () => {
+                  navigateToHome();
+                },
+              },
+            ]);
+            console.log("User data : ", data);
+          });
+        }
+      );
     } catch (error) {
       console.error(error);
     }

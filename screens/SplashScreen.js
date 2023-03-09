@@ -40,7 +40,12 @@ export default function SplashScreens() {
 
   return (
     <View
-      style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 50,
+      }}
       onLayout={onLayoutRootView}
     >
       <Text>SplashScreen Demo! 👋</Text>

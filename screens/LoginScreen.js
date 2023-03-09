@@ -6,16 +6,15 @@ import {
   View,
   Text,
   ScrollView,
+  Alert,
 } from "react-native";
 import React, { useEffect, useState } from "react";
-import { USER_LOGIN_ROOT } from "@env";
+import { BACKEND_CONNECTION } from "@env";
 import { Ionicons } from "@expo/vector-icons";
 
 const LoginScreen = ({ navigation }) => {
-  const [user, setUser] = useState({
-    userName: "",
-    password: "",
-  });
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   const [isFocused, setIsFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -29,22 +28,37 @@ const LoginScreen = ({ navigation }) => {
     navigation.navigate("Home");
   };
 
-  //get user data from the server
-  /* useEffect(() => {
-    fetch(USER_LOGIN_ROOT, {
-      method: "GET",
-      body: {
-        userName: user.userName,
-        password: user.password,
-      },
-    })
-      .then((results) => results.json())
-      .then((data) => {
-        setUser(data);
-        console.log("users: ", user);
-      });
-  }, []);
- */
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      userName: userName,
+      password: password,
+    }),
+  };
+
+  const LoginUser = () => {
+    try {
+      fetch(BACKEND_CONNECTION + "auth/login", requestOptions).then(
+        (response) => {
+          response.json().then((data) => {
+            Alert.alert("Hellokin message", "User logged in successfully", [
+              {
+                text: "OK",
+                onPress: () => {
+                  // navigateToHome();
+                },
+              },
+            ]);
+            console.log("User data : ", data);
+          });
+        }
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -59,8 +73,8 @@ const LoginScreen = ({ navigation }) => {
             Nom d'utilisateur
           </Text>
           <TextInput
-            value={user.userName}
-            onChangeText={(text) => setUser(text)}
+            value={userName}
+            onChangeText={(text) => setUserName(text)}
             onPressIn={() => setIsFocused(true)}
             style={styles.input}
           />
@@ -73,8 +87,8 @@ const LoginScreen = ({ navigation }) => {
             Mot de passe
           </Text>
           <TextInput
-            value={user.password}
-            onChangeText={(text) => setUser(text)}
+            value={password}
+            onChangeText={(text) => setPassword(text)}
             onPressIn={() => setIsPasswordFocused(true)}
             secureTextEntry={passwordVisible}
             style={styles.input}
@@ -88,7 +102,7 @@ const LoginScreen = ({ navigation }) => {
           />
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity onPress={navigateToHome} style={styles.button}>
+          <TouchableOpacity onPress={LoginUser} style={styles.button}>
             <Text style={styles.buttonText}>connexion</Text>
           </TouchableOpacity>
         </View>
