@@ -25,8 +25,8 @@ const SignupScreen = ({ navigation }) => {
     navigation.navigate("SignUpPage");
   };
 
-  const navigateToHome = () => {
-    navigation.navigate("Home");
+  const isValidEmail = () => {
+    return /\S+@\S+\.\S+/.test(phoneOrEmail);
   };
 
   const requestOptions = {
@@ -41,25 +41,67 @@ const SignupScreen = ({ navigation }) => {
   };
 
   const createNewUser = () => {
-    try {
-      fetch(BACKEND_CONNECTION + "auth/signup", requestOptions).then(
-        (response) => {
-          response.json().then((data) => {
-            Alert.alert("Hellokin message", "User created successfully", [
-              {
-                text: "OK",
-                onPress: () => {
-                  navigateToHome();
-                },
-              },
-            ]);
-            console.log("User data : ", data);
-          });
-        }
+    if (
+      phoneOrEmail.trim() == "" ||
+      fullName.trim() == "" ||
+      userName.trim() == "" ||
+      password.trim() == ""
+    ) {
+      Alert.alert(
+        "Hellokin message",
+        "Les valeurs de tous les champs sont requises",
+        [
+          {
+            text: "OK",
+          },
+        ]
       );
-    } catch (error) {
-      console.error(error);
-    }
+    } else if (password.length < 8) {
+      Alert.alert(
+        "Hellokin message",
+        "Le mot de passe doit être supérieur ou égal à 8 caractères",
+        [
+          {
+            text: "OK",
+          },
+        ]
+      );
+    } else if (!isValidEmail(phoneOrEmail)) {
+      Alert.alert("Hellokin message", "Adresse mail invalide", [
+        {
+          text: "OK",
+        },
+      ]);
+    } else
+      try {
+        fetch(BACKEND_CONNECTION + "auth/signup", requestOptions).then(
+          (response) => {
+            response.json().then((data) => {
+              data.message
+                ? Alert.alert(
+                    "Hellokin message",
+                    "Un compte existe déjà avec " + phoneOrEmail,
+                    [
+                      {
+                        text: "OK",
+                      },
+                    ]
+                  )
+                : Alert.alert("Hellokin message", "User created successfully", [
+                    {
+                      text: "OK",
+                      onPress: () => {
+                        navigateToLogin();
+                      },
+                    },
+                  ]);
+              console.log("User data : ", data);
+            });
+          }
+        );
+      } catch (error) {
+        console.error(error);
+      }
   };
 
   return (
