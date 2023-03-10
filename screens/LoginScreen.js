@@ -42,15 +42,18 @@ const LoginScreen = ({ navigation }) => {
       fetch(BACKEND_CONNECTION + "auth/login", requestOptions).then(
         (response) => {
           response.json().then((data) => {
-            Alert.alert("Hellokin message", "User logged in successfully", [
-              {
-                text: "OK",
-                onPress: () => {
-                  // navigateToHome();
-                },
-              },
-            ]);
             console.log("User data : ", data);
+            data.message
+              ? Alert.alert(
+                  "Hellokin message",
+                  "Nom d'utilisateur ou mot de passe incorrect",
+                  [
+                    {
+                      text: "OK",
+                    },
+                  ]
+                )
+              : navigateToHome();
           });
         }
       );
