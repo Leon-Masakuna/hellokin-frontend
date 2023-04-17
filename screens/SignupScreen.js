@@ -17,12 +17,13 @@ const SignupScreen = ({ navigation }) => {
   const [fullName, setFullName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassWord] = useState("");
+  const [error, setError] = useState(false);
 
   const navigateToLogin = () => {
     navigation.navigate("Login");
   };
   const navigateBack = () => {
-    navigation.navigate("SignUpPage");
+    navigation.navigate("LandingPage");
   };
 
   const isValidEmail = () => {
@@ -76,27 +77,34 @@ const SignupScreen = ({ navigation }) => {
       try {
         fetch(BACKEND_CONNECTION + "auth/signup", requestOptions).then(
           (response) => {
-            response.json().then((data) => {
-              data.message
-                ? Alert.alert(
-                    "Hellokin message",
-                    "Un compte existe déjà avec " + phoneOrEmail,
-                    [
-                      {
-                        text: "OK",
-                      },
-                    ]
-                  )
-                : Alert.alert("Hellokin message", "User created successfully", [
-                    {
-                      text: "OK",
-                      onPress: () => {
-                        navigateToLogin();
-                      },
-                    },
-                  ]);
-              console.log("User data : ", data);
-            });
+            response
+              .json()
+              .then((data) => {
+                data.message
+                  ? Alert.alert(
+                      "Hellokin message",
+                      "Un compte existe déjà avec " + phoneOrEmail,
+                      [
+                        {
+                          text: "OK",
+                        },
+                      ]
+                    )
+                  : Alert.alert(
+                      "Hellokin message",
+                      "Utilisateur créé avec succès",
+                      [
+                        {
+                          text: "OK",
+                          onPress: () => {
+                            navigateToLogin();
+                          },
+                        },
+                      ]
+                    );
+                console.log("User data : ", data);
+              })
+              .catch(() => setError(true));
           }
         );
       } catch (error) {
@@ -106,14 +114,9 @@ const SignupScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.backButton}>
-        <Feather
-          onPress={navigateBack}
-          name="arrow-left"
-          size={24}
-          color="#fca80a"
-        />
-      </View>
+      <TouchableOpacity onPress={navigateBack} style={styles.backButton}>
+        <Feather name="arrow-left" size={24} color="#fca80a" />
+      </TouchableOpacity>
       <Text style={styles.accountCreate}>Créez un compte</Text>
       <View style={styles.appleFbLogoContainer}>
         <View style={styles.facebookContainer}>

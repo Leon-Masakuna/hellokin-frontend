@@ -25,24 +25,33 @@ const Header = () => {
           style={styles.homeLogo}
         />
         <View style={styles.iconContainer}>
-          <Ionicons
-            name="ios-search"
-            size={24}
-            color="black"
-            style={styles.iconItems}
-          />
-          <Zocial
-            name="email"
-            size={24}
-            color="black"
-            style={styles.iconItems}
-          />
-          <AntDesign
-            name="shoppingcart"
-            size={24}
-            color="black"
-            style={styles.iconItems}
-          />
+          <View>
+            <Ionicons
+              name="ios-search"
+              size={24}
+              color="black"
+              style={styles.iconItems}
+            />
+          </View>
+          <View>
+            <Zocial
+              name="email"
+              size={24}
+              color="black"
+              style={[styles.iconItems, styles.middleIcon]}
+            />
+            <View style={styles.messageCountContainer}>
+              <Text style={styles.messageCount}>9</Text>
+            </View>
+          </View>
+          <View>
+            <AntDesign
+              name="shoppingcart"
+              size={24}
+              color="black"
+              style={styles.iconItems}
+            />
+          </View>
         </View>
       </View>
       <View style={styles.optionsContainer}>
@@ -72,12 +81,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingTop: 10,
     paddingLeft: 5,
-    paddingRight: 5,
-    marginBottom: 5,
+    paddingRight: 18,
+    marginBottom: 1,
   },
   image: {
-    width: 30,
-    height: 30,
+    width: 35,
+    height: 35,
     borderRadius: 50,
     alignSelf: "flex-end",
   },
@@ -85,12 +94,31 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     width: 75,
-    marginLeft: -30,
     alignSelf: "flex-end",
+    marginLeft: -30,
   },
   iconItems: {
-    fontSize: 20,
+    fontSize: 24,
     color: "white",
+  },
+  middleIcon: {
+    marginRight: 8,
+    marginLeft: 8,
+  },
+  messageCountContainer: {
+    backgroundColor: "red",
+    width: 15,
+    height: 15,
+    borderRadius: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: -27,
+    marginLeft: 20,
+  },
+  messageCount: {
+    color: "white",
+    textAlign: "center",
+    fontSize: 11,
   },
   logo: {
     fontSize: 33,
@@ -120,7 +148,7 @@ const styles = StyleSheet.create({
   },
   activeOption: {
     fontSize: 14,
-    backgroundColor: "#1bbcc7",
+    backgroundColor: "#041C2E",
     padding: 5,
     borderRadius: 15,
     paddingLeft: 10,

@@ -9,7 +9,7 @@ import {
 import React from "react";
 import Swiper from "react-native-swiper";
 
-const SignUpPage = ({ navigation }) => {
+const LandingPage = ({ navigation }) => {
   const navigateToSignup = () => {
     navigation.navigate("SignUp");
   };
@@ -88,7 +88,7 @@ const SignUpPage = ({ navigation }) => {
   );
 };
 
-export default SignUpPage;
+export default LandingPage;
 
 const styles = StyleSheet.create({
   container: {
