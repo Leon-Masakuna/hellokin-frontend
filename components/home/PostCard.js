@@ -7,11 +7,14 @@ import {
   Octicons,
   Fontisto,
 } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const PostCard = () => {
+  const navigation = useNavigation();
   const navigateToProfile = () => {
     navigation.navigate("Bio");
   };
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContent}>

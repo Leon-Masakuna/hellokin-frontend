@@ -7,7 +7,8 @@ import SignupScreen from "../screens/SignupScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import BottomTabs from "../components/home/BottomTabs";
 import LandingPage from "../screens/LandingPage";
-import VerificationPageScreen from "../screens/VerificationPageScreen";
+import VerificationScreen from "../screens/VerificationScreen";
+import NewPostScreen from "../screens/NewPostScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -43,7 +44,12 @@ const Routes = () => {
         <Stack.Screen
           name="Verification"
           options={{ headerShown: false }}
-          component={VerificationPageScreen}
+          component={VerificationScreen}
+        />
+        <Stack.Screen
+          name="NewPost"
+          options={{ headerShown: false }}
+          component={NewPostScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

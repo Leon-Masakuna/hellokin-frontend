@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import React from "react";
 
-const VerificationPageScreen = ({ navigation }) => {
+const VerificationScreen = ({ navigation }) => {
   const navigateToHome = () => {
     navigation.navigate("Home");
   };
@@ -39,7 +39,7 @@ const VerificationPageScreen = ({ navigation }) => {
   );
 };
 
-export default VerificationPageScreen;
+export default VerificationScreen;
 
 const styles = StyleSheet.create({
   scrollContainer: {

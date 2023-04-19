@@ -32,8 +32,8 @@ const LoginScreen = ({ navigation }) => {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      userName: userName,
-      password: password,
+      userName: userName.toLocaleLowerCase(),
+      password: password.toLocaleLowerCase(),
     }),
   };
 
