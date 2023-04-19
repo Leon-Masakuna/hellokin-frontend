@@ -12,10 +12,6 @@ import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
 const ProfileScreen = ({ navigation }) => {
   const [biography, setBiography] = useState("");
 
-  const navigateToHome = () => {
-    navigation.navigate("Home");
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.menuContainer}>
@@ -24,11 +20,9 @@ const ProfileScreen = ({ navigation }) => {
       <View>
         <View style={styles.imageContainer}>
           <Image
-            source={
-              {
-                // uri: "https://ca.slack-edge.com/T03BH6JN601-U03FK6874CF-fb4094095857-512",
-              }
-            }
+            source={{
+              uri: "https://ca.slack-edge.com/T03BH6JN601-U03FK6874CF-fb4094095857-512",
+            }}
             style={styles.image}
           />
         </View>
@@ -41,7 +35,7 @@ const ProfileScreen = ({ navigation }) => {
         </View>
       </View>
       <ScrollView style={styles.containerScroll}>
-        <View style={styles.containerInputs}></View>
+        <View style={styles.imageContents}></View>
       </ScrollView>
     </View>
   );
@@ -86,7 +80,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
-  containerInputs: {
+  imageContents: {
     width: "100%",
     height: 180,
     backgroundColor: "#363737",
