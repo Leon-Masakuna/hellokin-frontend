@@ -4,7 +4,7 @@ import Entypo from "@expo/vector-icons/Entypo";
 import * as SplashScreen from "expo-splash-screen";
 import * as Font from "expo-font";
 
-// Keep the splash screen visible while we fetch resources
+// Keep the splash screen visible while we fetch resource
 SplashScreen.preventAutoHideAsync();
 
 export default function SplashScreens() {

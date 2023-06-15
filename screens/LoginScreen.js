@@ -110,7 +110,7 @@ const LoginScreen = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={styles.bottomTextContainer}>
-          <Text>vous êtes nouveau sur HelloKin ?</Text>
+          <Text>vous êtes nouveau sur Hellokin ?</Text>
           <Text onPress={navigateToSignup} style={styles.secondBottomText}>
             Créez un compte
           </Text>

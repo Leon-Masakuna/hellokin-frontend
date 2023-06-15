@@ -27,15 +27,15 @@ For your work environment, you must install
 Install my-project with npm
 
 ```bash
-  git clone https://github.com/eltazy/vortex-ads-images-bank-app.git
-  cd vortex-ads-images-bank-app
+  git clone https://github.com/Leon-Masakuna/hellokin-frontend.git
+  cd hellokin-frontend
   npm install
 ```
 
 To run the app
 
 ```bash
-  expo start,
+  expo start or npm run start,
   expo start -c : "only if you got troubleshoot,
   Then enter the url address in your emulator
   Or scan the QR code if you are testing from your mobile
